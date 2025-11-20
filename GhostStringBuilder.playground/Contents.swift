@@ -19,7 +19,7 @@ func g() -> String {
   "A"
 }
 
-g()
+g() // "A"
 
 // @resultBuilder を使用すると、構文解析後のフェーズに介入し、ユーザー定義の規則で「構文木の意味づけ（構文解釈）」を差し替えることができる。
 // ソースコード → 字句解析（Lexing） → 構文解析（Parsing to AST） → \\ HERE // → 型推論・意味解析（Type checking / Semantic analysis） → 中間言語生成（SIL → LLVM IR） → コンパイル
@@ -63,7 +63,7 @@ var h: String {
   "B"
 }
 
-h
+h // "AB"
 
 // ⭕ function
 @GhostStringBuilder
@@ -72,7 +72,7 @@ func i() -> String {
   "B"
 }
 
-i()
+i() // "AB"
 
 // ⭕ function parameter
 func j(@GhostStringBuilder _ closure: () -> String) -> String {
@@ -82,7 +82,7 @@ func j(@GhostStringBuilder _ closure: () -> String) -> String {
 j {
   "A"
   "B"
-}
+} // "AB"
 
 
 
