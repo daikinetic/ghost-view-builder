@@ -39,11 +39,9 @@ struct GhostViewBuilder {
     _ConditionalContent(_storage: .falseContent(second))
   }
   
-  /// 🤷‍♂️
-  /// Processes view content for a conditional compiler-control
-  /// statement that performs an availability check.
+  /// avilable 分岐の時には往々にして型が揃わないので、それを加味して AnyView で型消去する。
   static func buildLimitedAvailability<Content>(_ content: Content) -> AnyView where Content: View {
-    content as! AnyView
+    AnyView(content)
   }
 }
 
